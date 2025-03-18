@@ -1,0 +1,68 @@
+<div class="flex h-screen">
+  <!-- Sidebar -->
+  <div class="w-64 bg-gray-800 text-white">
+    <div class="p-6 text-center text-2xl font-bold">Dashboard</div>
+    <ul class="space-y-4 mt-6 px-4">
+      <li>
+        <a
+          href="#"
+          class="block py-2 px-4 hover:bg-gray-700 rounded"
+          routerLink="/"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          class="block py-2 px-4 hover:bg-gray-700 rounded"
+          routerLink="/remote"
+          >Analytics</a
+        >
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 hover:bg-gray-700 rounded">Logout</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 bg-gray-50">
+    <!-- Navbar -->
+    <div class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+      <div class="text-xl font-semibold text-gray-800">Welcome back, User!</div>
+      <div class="flex items-center space-x-4">
+        <span class="text-gray-600">Notifications</span>
+        <span class="text-gray-600">Profile</span>
+      </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg font-semibold text-gray-800">Total Revenue</h3>
+        <p class="text-2xl text-gray-900 mt-2">$12,500</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg font-semibold text-gray-800">Users</h3>
+        <p class="text-2xl text-gray-900 mt-2">1,200</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg font-semibold text-gray-800">Orders</h3>
+        <p class="text-2xl text-gray-900 mt-2">500</p>
+      </div>
+    </div>
+
+    <div class="p-6 space-y-6">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- Footer -->
+    <div class="bg-white py-4 text-center text-gray-600 mt-6">
+      <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </div>
+  </div>
+</div>
