@@ -1,9 +1,7 @@
 const { withNativeFederation, shareAll } = require('@angular-architects/native-federation/config');
 
 module.exports = withNativeFederation({
-
   name: 'remote',
-
   exposes: {
     './Component': './projects/remote/src/app/app.component.ts',
   },

@@ -22,14 +22,6 @@
 </div>
 
 <!-- Dummy Analytics Bar Chart -->
-<div class="bg-white p-6 rounded-lg shadow-lg">
-  <h3 class="text-lg font-semibold text-gray-800">Website Traffic</h3>
-  <div class="mt-4 h-48 bg-gray-200 rounded">
-    <div class="h-2 bg-blue-500" style="width: 80%"></div>
-    <div class="h-2 bg-green-500 mt-2" style="width: 60%"></div>
-    <div class="h-2 bg-red-500 mt-2" style="width: 30%"></div>
-  </div>
-</div>
 
 <!-- Dummy Analytics Line Chart -->
 <div class="bg-white p-6 rounded-lg shadow-lg">
@@ -48,5 +40,24 @@
         stroke-width="2"
       />
     </svg>
+  </div>
+</div>
+
+<!-- Add a new row with two sections for the graphs -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <!-- Recipe Ratings Chart -->
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+    <app-graph
+      [chartData]="barChartData"
+      [chartOptions]="barChartOptions"
+    ></app-graph>
+  </div>
+
+  <!-- Polar Chart -->
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+    <app-graph
+      [chartData]="polarChartData"
+      [chartOptions]="polarChartOptions"
+    ></app-graph>
   </div>
 </div>
