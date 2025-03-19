@@ -10,6 +10,11 @@ export const routes: Routes = [
       loadRemoteModule('remote', './Component').then((m) => m.AppComponent),
   },
   {
+    path: 'data-table',
+    loadComponent: () =>
+      loadRemoteModule('data-table', './Component').then((m) => m.AppComponent),
+  },
+  {
     path: '**',
     component: HomeComponent,
   },
