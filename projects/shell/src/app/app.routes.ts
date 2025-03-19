@@ -3,9 +3,8 @@ import { loadRemoteModule } from '@angular-architects/native-federation';
 import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
   {
-    path: 'remote',
+    path: '',
     loadComponent: () =>
       loadRemoteModule('remote', './Component').then((m) => m.AppComponent),
   },
@@ -16,6 +15,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    component: HomeComponent,
+    loadComponent: () =>
+      loadRemoteModule('remote', './Component').then((m) => m.AppComponent),
   },
 ];

@@ -6,7 +6,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'data-table-root',
-  imports: [RouterOutlet, FormsModule, CommonModule, HttpClientModule],
+  imports: [FormsModule, CommonModule, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
