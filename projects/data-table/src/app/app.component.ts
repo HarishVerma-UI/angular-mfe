@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
 
   applyFilterAndPagination() {
     const filtered = this.countriesData.filter((country) =>
-      country.name.toLowerCase().includes(this.filterText.toLowerCase())
+      country.name?.toLowerCase().includes(this.filterText?.toLowerCase() || '')
     );
 
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
   get totalPages(): number {
     return Math.ceil(
       this.countriesData.filter((country) =>
-        country.name.toLowerCase().includes(this.filterText.toLowerCase())
+        country.name?.toLowerCase().includes(this.filterText?.toLowerCase() || '')
       ).length / this.itemsPerPage
     );
   }
