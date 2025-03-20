@@ -4,6 +4,43 @@ This project is a micro-frontend application built using [Angular CLI](https://g
 
 ---
 
+# Micro-Frontend Angular Workspace
+
+This workspace contains three Angular projects:
+
+1. **Shell**: The main application that integrates the micro-frontends.
+![alt text](image.png)
+2. **Data-Table**: A micro-frontend that displays a table of data.
+![alt text](image-1.png)
+3. **Remote**: A micro-frontend that displays graphs and charts.
+![alt text](image-2.png)
+## Running the Applications
+
+### 1. Serve the Shell Application
+To serve the main shell application and display both the Data-Table and Remote micro-frontends:
+```bash
+ng serve shell
+http://localhost:4200/
+```
+
+### 2. Serve the Data-Table Micro-Frontend
+To serve the Data-Table micro-frontend independently:
+```bash
+ng serve data-table
+http://localhost:4202/
+```
+This will display the Data-Table application as a standalone app.
+
+### 3. Serve the Remote Micro-Frontend
+To serve the Remote micro-frontend independently:
+```bash
+ng serve remote
+http://localhost:4201/
+```
+This will display the Remote application with its graph components as a standalone app.
+
+---
+
 ## Development Server
 
 To start a local development server, run:
@@ -25,20 +62,20 @@ This project uses Webpack Module Federation to enable micro-frontend architectur
 - **Remote Applications**: Other micro-frontends can be integrated as remote modules.
 - **Shared Dependencies**: Common libraries (e.g., Angular, RxJS) are shared between the host and remote applications to reduce duplication.
 
-To configure Module Federation, the `webpack.config.js` file is used. For example:
+To configure Module Federation. For example:
 ```javascript
-plugins: [
-  new ModuleFederationPlugin({
-    name: 'shell',
-    remotes: {
-      remoteApp: 'remoteApp@http://localhost:4201/remoteEntry.js',
-    },
-    shared: {
-      '@angular/core': { singleton: true, strictVersion: true },
-      '@angular/common': { singleton: true, strictVersion: true },
-    },
-  }),
-],
+const { withNativeFederation, shareAll } = require('@angular-architects/native-federation/config');
+
+module.exports = withNativeFederation({
+  name: 'shell', // Shell app name
+  remotes: {
+    "remote": "http://localhost:4201/remoteEntry.json",
+    "data-table": "http://localhost:4202/remoteEntry.json" 
+  },
+  shared: {
+    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+  },
+});
 ```
 
 ---
@@ -78,18 +115,6 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ```bash
 ng test
 ```
-
----
-
-## Running End-to-End Tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
 ---
 
